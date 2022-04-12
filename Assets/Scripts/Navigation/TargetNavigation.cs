@@ -3,19 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TargetNavigation : MonoBehaviour {
+
+public class TargetNavigation : MonoBehaviour
+{
 
     [SerializeField] private Transform movePositionTransform;
 
-    private NavMeshAgent navMeshAgent;
+    
 
-    private void Awake()
+    public Transform player;
+    public Transform enemy;
+
+    private NavMeshAgent navMeshAgent;
+    private Sanity sanity;
+
+    private void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>(); 
+        sanity = player.GetComponent<Sanity>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.stoppingDistance = 10;
     }
 
     private void Update()
     {
+        // tell the agent where to go
         navMeshAgent.destination = movePositionTransform.position;
+
+        // check follow distance
+        CheckFollowDistance();
     }
+
+    private void CheckFollowDistance()
+    {
+        switch (sanity.CurrentSanity)
+        {
+            case 100:
+                navMeshAgent.stoppingDistance = 10;
+                break;
+
+        }
+    }
+
 }

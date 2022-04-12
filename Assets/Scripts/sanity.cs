@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class sanity : MonoBehaviour
+public class Sanity : MonoBehaviour
 {
-    [SerializeField] private float MaxSanity = 100f;
-    [SerializeField] private float CurrentSanity = 100f;
-    [SerializeField] private float NormalSanityDrain = 0.5f;
-    [SerializeField] private Canvas PlayerCanvas = null;
-    [SerializeField] private Image SanityBar = null;
+    [SerializeField] public float MaxSanity = 100f;
+    [SerializeField] public float CurrentSanity = 100f;
+    [SerializeField] public float NormalSanityDrain = 0.5f;
+    [SerializeField] public Canvas PlayerCanvas = null;
+    [SerializeField] public Image SanityBar = null;
 
     
     void Start()

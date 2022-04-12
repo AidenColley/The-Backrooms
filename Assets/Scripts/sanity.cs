@@ -12,6 +12,7 @@ public class sanity : MonoBehaviour
     [SerializeField] private Canvas PlayerCanvas = null;
     [SerializeField] private Image SanityBar = null;
     [SerializeField] private Text text = null;
+    [SerializeField] private Text interactText = null;
     
     public Transform camera;
     [SerializeField] private float interactDist = 2f;
@@ -47,18 +48,21 @@ public class sanity : MonoBehaviour
 
     void Interact()
     {
+        interactText.text = "";
         RaycastHit hit;
         if(Physics.Raycast(camera.position, camera.forward, out hit, interactDist)){
+            
             if (hit.collider.gameObject.tag == "Almond Water") 
             {
-                
+                interactText.text = "Press E to interact";
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     AlmondWaterPickup();
                     Destroy(hit.transform.gameObject);
                 }
 
-            }
+            } 
+          
         }
     }
 

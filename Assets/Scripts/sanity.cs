@@ -15,7 +15,7 @@ public class sanity : MonoBehaviour
     [SerializeField] private Text interactText = null;
     
     public Transform camera;
-    [SerializeField] private float interactDist = 2f;
+    [SerializeField] private float interactDist = 4f;
     
     
     void Start()

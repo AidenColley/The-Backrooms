@@ -7,7 +7,7 @@ public class Sanity : MonoBehaviour
 {
     public float MaxSanity = 100f;
     private float AlmondWaterIncreaseSanity;
-    [SerializeField] private float CurrentSanity = 100f;
+    [SerializeField] public float CurrentSanity = 100f;
     [SerializeField] private float NormalSanityDrain = 0.5f;
     [SerializeField] private Canvas PlayerCanvas = null;
     [SerializeField] private Image SanityBar = null;

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Sanity : MonoBehaviour
 {
@@ -12,9 +14,12 @@ public class Sanity : MonoBehaviour
     [SerializeField] private Canvas PlayerCanvas = null;
     [SerializeField] private Image SanityBar = null;
     [SerializeField] private Text text = null;
+    [SerializeField] private Text interactText = null;
+    [SerializeField] private Volume volume;
+    
     
     public Transform camera;
-    [SerializeField] private float interactDist = 2f;
+    [SerializeField] private float interactDist = 4f;
     
     
     void Start()
@@ -25,8 +30,11 @@ public class Sanity : MonoBehaviour
     
     void Update()
     {
-        
-        
+        if (volume != null)
+        {
+            
+        }
+
         Interact();
         if (CurrentSanity > 0)
         {
@@ -47,18 +55,21 @@ public class Sanity : MonoBehaviour
 
     void Interact()
     {
+        interactText.text = "";
         RaycastHit hit;
         if(Physics.Raycast(camera.position, camera.forward, out hit, interactDist)){
+            
             if (hit.collider.gameObject.tag == "Almond Water") 
             {
-                
+                interactText.text = "Press E to interact";
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     AlmondWaterPickup();
                     Destroy(hit.transform.gameObject);
                 }
 
-            }
+            } 
+          
         }
     }
 

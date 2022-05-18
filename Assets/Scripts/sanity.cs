@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class sanity : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class sanity : MonoBehaviour
     [SerializeField] private Image SanityBar = null;
     [SerializeField] private Text text = null;
     [SerializeField] private Text interactText = null;
+    [SerializeField] private Volume volume;
+    
     
     public Transform camera;
     [SerializeField] private float interactDist = 4f;
@@ -26,8 +30,11 @@ public class sanity : MonoBehaviour
     
     void Update()
     {
-        
-        
+        if (volume != null)
+        {
+            
+        }
+
         Interact();
         if (CurrentSanity > 0)
         {
